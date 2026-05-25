@@ -1,0 +1,6 @@
+quantidade = int(input("qual a quantidade de produtos? "))
+valor = float(input("qual o valor do produto? "))
+pagar = (quantidade * valor)
+print("quantidade:",quantidade)
+print("valor:",valor)
+print("quanto a pagar:",pagar)
