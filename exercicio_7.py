@@ -1,0 +1,6 @@
+numero_1 = float(input("qual é o primeiro numero? "))
+numero_2 = float(input("qual é o segundo numero? "))
+print("soma:",numero_1 + numero_2)
+print("subtração:",numero_1 - numero_2)
+print("multiplicação:",numero_1 * numero_2)
+print("divisão:",numero_1 / numero_2)
