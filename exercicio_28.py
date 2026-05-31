@@ -18,16 +18,29 @@ while True:
     if menu == 1:
         while True:
             try:
-                aluno = {
-                "nome": input("Digite o nome do produto: "),
-                "preço": float(input("Digite o preço do produto: "))
+                produto = {
+                "nome": "" ,
+                "preço": ""
                 }
+                while True:
+                    produto["nome"] = input("Digite o nome do produto: ")
+                    if produto["nome"] == "":
+                        print("Erro: Digite o nome correto")
+                        continue
+                    break
+
+                while True:
+                    produto["preço"] = float(str(input("Digite o preço do produto: ")).replace(",","."))
+                    if produto["preço"] <= 0:
+                        print("Erro: Digite o preço correto")
+                        continue
+                    break
             except ValueError:
                 print("Erro:Digite o valor correto")
                 continue
             break
-
-        produto1 = Produto(aluno["nome"],aluno["preço"])
+            
+        produto1 = Produto(produto["nome"],produto["preço"])
         produtos.append(produto1)
 
     elif menu == 2:
@@ -36,7 +49,7 @@ while True:
         
         else:
             for indice,produto in enumerate(produtos):
-                print(f"numero do produto: {indice} | nome do produto: {produto.nome} | preço do produto: {produto.preço}")
+                print(f"numero do produto: {indice} | nome do produto: {produto.nome} | preço do produto: {str(produto.preço).replace(".",",")}")
     
     elif menu == 3:
             try:
@@ -53,8 +66,8 @@ while True:
             valor_final = int(valor_compra(produto_escolhido.preço,quantidade))
         
             if valor_final >= 100:
-                print("\nvocê terá desconto de R$20,00")
-                valor_final = valor_final - 20.00
+                print("\nvocê terá desconto")
+                valor_final = valor_final
             else:
                 print("\nvocê não terá desconto")
 
@@ -63,7 +76,7 @@ while True:
             print(f"O valor total ficou {str(valor_final).replace(".",",")}")
 
             while True:
-                continuar_compra = input("\nvocê quer continuar a compra? (S/N)")
+                continuar_compra = input("\nvocê quer finalizar a compra? (S/N)")
 
                 if continuar_compra.lower() == "s":
                     print("Finalizando compra ...")
